@@ -1,0 +1,31 @@
+#listTbl{
+    width:90%; margin:0 auto;
+}
+
+#listTbl tr:hover{
+    background-color: lightgoldenrodyellow;
+}
+
+#listTbl tr td{
+    border: 1px solid RGB(227,227,227);
+}
+
+#lineTbl{
+    width:99%; margin:0 auto;
+}
+
+#lineTbl tr td{
+    border: 0px;
+}
+
+#lineTbl tr td:nth-child(1){
+    min-width: 30px;
+    width:10%;
+}
+#lineTbl tr td:nth-child(2){
+    width:80%;
+}
+#lineTbl tr td:nth-child(3){
+    min-width: 100px;
+    width:10%;
+}

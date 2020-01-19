@@ -1,0 +1,36 @@
+#header{
+    width : 100%;
+    background-color: indianred;
+}
+#menu_div{
+    width: 50%;
+    height: 100%;
+    float: right;
+    background-color: RGB(227,227,227);
+}
+
+#menu{
+    width: 100%;   
+}
+
+#menu > li{
+    width:100%; 
+ }
+
+#menu > li a{
+    border: 1px solid RGB(227,227,227);
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    color : RGB(127,127,127);
+}
+
+#menu > li #subMenu{
+    display: none;
+    background-color: RGB(255,255,255);
+}
+
+#centent{
+    width : 100%;
+    background-color: teal;
+}
