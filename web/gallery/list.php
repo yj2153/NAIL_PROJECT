@@ -22,7 +22,6 @@ $imgList->bindParam(1, $start, PDO::PARAM_INT);
 $imgList->execute();
 $img = $imgList->fetchAll();
 
-echo count($img);
 ?>
 
 <div id="content">

@@ -42,35 +42,51 @@ if(!empty($_POST)){
 ?>
 
 <div id="lead">
-    <p><?php echo $settings->login['login_info_01']; ?></p>
-    <p><?php echo $settings->login['login_info_02']; ?></p>
-    <p>&raquo;<a href="index.php?page=signUp"><?php echo $settings->login['login_sign_up']; ?></a></p>
+    <h1>Login</h1>
 </div>
 <form action="" method="post">
-    <dl>
-        <dt><?php echo $settings->login['login_input_email']; ?></dt>
-        <dd>
-            <input type="text" name="email" size="35" maxlength="255" 
-            value="<?php echo isset($_POST['email']) ? h($_POST['email']) : ''; ?>"/>
-            <?php if(isset($error['login']) && $error['login'] == 'blank') : ?>
-                <p class="error"><?php echo $settings->loginError['login_error_email_blank']; ?></p>
-            <?php endif; ?>
-            <?php if(isset($error['login']) && !strcmp($error['login'], 'failed')) : ?>
-                <p class="error"><?php echo $settings->loginError['login_error_email_failed']; ?></p>
-            <?php endif; ?>
-        </dd>
-        <dt><?php echo $settings->login['login_input_password']; ?></dt>
-        <dd>
-            <input type="password" name="password" size="35" maxlength="255" 
-            value="<?php echo isset($_POST['password']) ? h($_POST['password']) : ''; ?>" />
-        </dd>
-        <dt><?php echo $settings->login['login_check_info01']; ?></dt>
-        <dd>
-            <input id="save" type="checkbox" name="save" value="on" />
-            <label for="save"><?php echo $settings->login['login_check_info02']; ?></label>
-        </dd>
-    </dl>
-    <div>
-        <input type="submit" value="<?php echo $settings->login['login_sign_in']; ?>"/>
+    <div id="loginDiv">
+        <div id="loginTblDiv">
+            <table style="width:100%; height:100%;">
+               <tr>
+                    <td>
+                        <table id="loginTbl">
+                            <tr>
+                                <td><?php echo $settings->login['login_input_email']; ?></td>
+                                <td>
+                                    <input type="text" name="email" size="35" maxlength="255" 
+                                    value="<?php echo isset($_POST['email']) ? h($_POST['email']) : ''; ?>"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $settings->login['login_input_password']; ?></td>
+                                <td>
+                                    <input type="password" name="password" size="35" maxlength="255" value="<?php echo isset($_POST['password']) ? h($_POST['password']) : ''; ?>" />
+                                <td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <?php if(isset($error['login']) && $error['login'] == 'blank') : ?>
+                                        <p class="error"><?php echo $settings->loginError['login_error_email_blank']; ?></p>
+                                    <?php endif; ?>
+                                    <?php if(isset($error['login']) && !strcmp($error['login'], 'failed')) : ?>
+                                        <p class="error"><?php echo $settings->loginError['login_error_email_failed']; ?></p>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                                <td colspan="2">
+                                    <input id="save" type="checkbox" name="save" value="on" />
+                                    <label for="save"><?php echo $settings->login['login_check_info02']; ?></label>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:90%; margin:0 auto;">
+            <input type="button" onclick="location.href='index.php?page=signUp'" value="<?php echo $settings->login['login_sign_up']; ?>"/>
+            <input type="submit" style="float:right;" value="<?php echo $settings->login['login_sign_in']; ?>"/>
+        </div>
     </div>
 </form>

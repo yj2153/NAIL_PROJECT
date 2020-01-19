@@ -9,6 +9,11 @@ if(isset($_REQUEST['listNum'])){
 }
 
 
+$info = getimagesize("./resource/image/".$gallery['picture']);
+
+$width = $info[0] > 500 ? 500 : $info[0];
+$height = $info[1] > 500 ? 500 : $info[1];
+
 ?>
 
 <div id="content">
@@ -20,7 +25,7 @@ if(isset($_REQUEST['listNum'])){
             </tr>
             <tr>
                 <td colspan="2">
-                <img src="./resource/image/<?php echo h($gallery['picture']); ?>" width="100" height="100" alt=""/>
+                <img src="./resource/image/<?php echo h($gallery['picture']); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" alt=""/>
                 </td>
             </tr>
         </table>

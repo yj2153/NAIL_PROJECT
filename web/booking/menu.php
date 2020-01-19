@@ -11,10 +11,13 @@ $nails->execute();
 ?>
 
 <div id="content">
+    <div id="title">
+    <h1><?php echo h($settings->booking['booking_menu_title']); ?></h1>
+    </div>
     <table id="listTbl">
         <?php while($nail = $nails->fetch()) : ?>
-            <tr class="line">
-                <?php if(!empty($nail['type']) && empty($nail['title'])) : ?>
+            <?php if(!empty($nail['type']) && empty($nail['title'])) : ?>
+                <tr class="lineTitle">
                     <td colspan="2" style="font-weight:bold;">
                         <?php switch($nail['type']){
                             case "1":
@@ -31,7 +34,9 @@ $nails->execute();
                         }
                         ?>
                     </td>
-                <?php elseif(!empty($nail['type'])) : ?>
+                </tr>
+            <?php elseif(!empty($nail['type'])) : ?>
+                <tr class="line">
                     <td>
                         <?php if(!strcmp($lang, 'ja')){
                                 echo h($nail['title']);
@@ -46,8 +51,8 @@ $nails->execute();
                                 echo h($nail['price_ko']).$settings->booking['booking_type_unit'];
                             } ?>
                     </td>
-                <?php endif; ?>
-            </tr>
+                </tr>
+            <?php endif; ?>
         <?php endwhile; ?>
     </table>
 </div>

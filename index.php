@@ -36,10 +36,10 @@
   //言語切り替え
   if($lang == 'ko'){
       //韓国語
-      $settings = Settings::getInstance($_SERVER['DOCUMENT_ROOT']."/PROJECT/PROJECT01/NAIL_PROJECT/resource/ini/languageKO.ini");
+      $settings = Settings::getInstance("./resource/ini/languageKO.ini");
   }else{
       //日本語
-      $settings = Settings::getInstance($_SERVER['DOCUMENT_ROOT']."/PROJECT/PROJECT01/NAIL_PROJECT/resource/ini/languageJP.ini");
+      $settings = Settings::getInstance("./resource/ini/languageJP.ini");
   }
 ?>
 <!DOCTYPE html>
@@ -48,6 +48,7 @@
         <meta charest="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="format-detection" content="telephone=no" />
         <title>seulgiNail</title>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -60,10 +61,13 @@
 
         <?php switch($page){ 
                 case "map":
+                    echo '<link rel="stylesheet" href="./resource/css/info/map.css"/>';
                 break;
                 case "login": 
+                    echo '<link rel="stylesheet" href="./resource/css/main/login.css"/>';
                 break; 
                 case "signUp": 
+                    echo '<link rel="stylesheet" href="./resource/css/join/signUp.css"/>'; 
                 break; 
                 case "signUpCheck": 
                 break; 
@@ -92,6 +96,7 @@
                     echo '<link rel="stylesheet" href="./resource/css/booking/confirm.css"/>';
                 break;
                 default: 
+                    echo '<link rel="stylesheet" href="./resource/css/info/info.css"/>';
                 break; 
             } ?>
 
@@ -118,7 +123,7 @@
                         <?php if(empty($userInfo)) : ?>
                             <a href="./index.php?page=login">Login</a>
                         <?php else : ?>
-                            <a href="./logout.php">LogOut</a>
+                            <a href="./web/main/logout.php">LogOut</a>
                         <?php endif; ?>
                     </td>
                     <td style="text-align:right;">

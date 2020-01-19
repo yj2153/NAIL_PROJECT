@@ -1,0 +1,36 @@
+#lead{
+    text-align: center;
+    margin-top: 50px;
+}
+#loginDiv{
+    width: 400px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+#loginTblDiv{
+    width: 100%;
+    height: 100%;
+    border: 1px solid RGB(177,177,177);
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+#loginTbl{
+    width: 90%;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+#loginTbl tr td{
+    height:30px;
+}
+
+#loginTbl tr td{
+    text-align: center;
+}
+
+#loginTbl tr td input[type="text"],
+#loginTbl tr td input[type="password"]{
+    width: 150px;
+}

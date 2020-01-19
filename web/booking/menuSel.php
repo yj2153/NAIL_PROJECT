@@ -21,8 +21,8 @@ $nails->execute();
         <h1><?php echo $settings->booking['booking_menu']; ?></h1>
         <table id="listTbl">
             <?php while($nail = $nails->fetch()) : ?>
-                <tr class="line">
-                    <?php if(!empty($nail['type']) && empty($nail['title'])) : ?>
+                <?php if(!empty($nail['type']) && empty($nail['title'])) : ?>
+                    <tr class="lineTitle">    
                         <td colspan="2" style="font-weight:bold;">
                             <?php switch($nail['type']){
                                 case "1":
@@ -39,7 +39,9 @@ $nails->execute();
                             }
                             ?>
                         </td>
-                    <?php elseif(!empty($nail['type'])) : ?>
+                    </tr>
+                <?php elseif(!empty($nail['type'])) : ?>
+                    <tr class="line">    
                         <td><input type="checkbox" name="nailMenu[]" class="nailMenu" id="menu<?php echo $nail['id']; ?>" value="<?php echo $nail['id']; ?>"/></td>
                         <td>
                             <?php if(!strcmp($lang, 'ja')){
@@ -55,8 +57,8 @@ $nails->execute();
                                     echo h($nail['price_ko']).$settings->booking['booking_type_unit'];
                                 } ?>
                         </td>
-                    <?php endif; ?>
-                </tr>
+                    </tr>
+                <?php endif; ?>
             <?php endwhile; ?>
         </table>
         <div><input type="button" id="nextBtn" value="<?php echo $settings->booking['booking_sel_next']; ?>"/></div>

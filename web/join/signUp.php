@@ -1,10 +1,9 @@
 <?php
 //ログインしている場合、
-if(isset($_SESSION['userInfo']){
+if(!empty($userInfo)){
     header('Location: index.php');
     exit();
 }
-
 
 if(!empty($_POST)){
     //エラー項目の確認
@@ -47,38 +46,41 @@ if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'rewrite'){
 ?>
 
  <p><?php echo $settings->join['join_info']; ?></p>
- <form action="" method="post" enctype="multipart/form-data">
-    <dl>
-        <dt><?php echo $settings->join['join_input_name']; ?><span class="required"><?php echo $settings->join['join_required']; ?></span></dt>
-        <dd>
-            <input type="text" name="name" size="35" maxlength="255" 
-            value="<?php echo isset($_POST['name']) ? h($_POST['name']) : ''; ?>" />
-            <?php if(isset($error['name']) && $error['name'] == 'blank') : ?>
-            <p class="error"><?php echo $settings->joinError['join_error_name_blank']; ?></p>
-            <?php endif; ?>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-        </dd>
-        <dt><?php echo $settings->join['join_input_email']; ?><span class="required"><?php echo $settings->join['join_required']; ?></span></dt>
-        <dd>
-            <input type="text" name="email" size="35" maxlength="255" 
-            value="<?php echo isset($_POST['email']) ? h($_POST['email']) : ''; ?>" />
-            <?php if(isset($error['email']) && $error['email'] == 'blank') : ?>
-            <p class="error"><?php echo $settings->joinError['join_error_email_blank']; ?></p> 
-            <?php endif; ?>
-            <?php if(isset($error['email']) && $error['email'] == 'duplicate') : ?>
-            <p class="error"><?php echo $settings->joinError['join_error_email_duplicate']; ?></p> 
-            <?php endif; ?>
-        </dd>
-        <dt><?php echo $settings->join['join_input_password']; ?><span class="required"><?php echo $settings->join['join_required']; ?></span></dt>
-        <dd>
-            <input type="password" name="password" size="10" maxlength="20"
-            value="<?php echo isset($_POST['password']) ? h($_POST['password']) : ''; ?>"/>
-            <?php if(isset($error['password']) && $error['password'] == 'blank') : ?>
-            <p class="error"><?php echo $settings->joinError['join_error_password_blank']; ?></p>
-            <?php endif; ?>
-            <?php if(isset($error['password']) && $error['password'] == 'length') : ?>
-            <p class="error"><?php echo $settings->joinError['join_error_password_length']; ?></p>
-            <?php endif; ?>
-        </dd>
-        <div><input type="submit" value="<?php echo $settings->join['join_sign_up']; ?>"/></div>
-    </dl>
- </form> 
+ <form action="" method="post">
+    <table id="signTbl">
+        <tr>
+            <td><?php echo $settings->join['join_input_name']; ?><span class="required"><?php echo $settings->join['join_required']; ?></span></td>
+            <td>
+                <input type="text" name="name" size="35" maxlength="255" value="<?php echo isset($_POST['name']) ? h($_POST['name']) : ''; ?>" />
+                <?php if(isset($error['name']) && $error['name'] == 'blank') : ?>
+                    <p class="error"><?php echo $settings->joinError['join_error_name_blank']; ?></p>
+                <?php endif; ?>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+            </td>
+        </tr>
+        <tr>
+            <td><?php echo $settings->join['join_input_email']; ?><span class="required"><?php echo $settings->join['join_required']; ?></span></td>
+            <td>
+                <input type="text" name="email" size="35" maxlength="255" value="<?php echo isset($_POST['email']) ? h($_POST['email']) : ''; ?>" />
+                <?php if(isset($error['email']) && $error['email'] == 'blank') : ?>
+                    <p class="error"><?php echo $settings->joinError['join_error_email_blank']; ?></p> 
+                <?php endif; ?>
+                <?php if(isset($error['email']) && $error['email'] == 'duplicate') : ?>
+                    <p class="error"><?php echo $settings->joinError['join_error_email_duplicate']; ?></p> 
+                <?php endif; ?>
+            </td>
+        </tr>
+        <tr>
+            <td><?php echo $settings->join['join_input_password']; ?><span class="required"><?php echo $settings->join['join_required']; ?></span></td>
+            <td>
+                <input type="password" name="password" size="10" maxlength="20" value="<?php echo isset($_POST['password']) ? h($_POST['password']) : ''; ?>"/>
+                <?php if(isset($error['password']) && $error['password'] == 'blank') : ?>
+                    <p class="error"><?php echo $settings->joinError['join_error_password_blank']; ?></p>
+                <?php endif; ?>
+                <?php if(isset($error['password']) && $error['password'] == 'length') : ?>
+                    <p class="error"><?php echo $settings->joinError['join_error_password_length']; ?></p>
+                <?php endif; ?>
+            </td>
+        </tr>
+    </table>
+    <div><input type="submit" value="<?php echo $settings->join['join_sign_up']; ?>"/></div>
+</form> 

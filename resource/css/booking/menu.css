@@ -2,15 +2,23 @@
     width:90%; margin:0 auto;
 }
 
-#listTbl tr:hover{
+.line:hover{
     background-color: lightgoldenrodyellow;
 }
 
 #listTbl tr td{
     border: 1px solid RGB(227,227,227);
+    height:40px;
+    padding-left: 10px;
 }
 
 #listTbl tr td:nth-child(2){
     min-width: 100px;
     width:20%;
+}
+
+#title{
+    width:90%; 
+    margin: 0 auto;
+    margin-top: 50px;
 }

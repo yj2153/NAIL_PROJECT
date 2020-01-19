@@ -23,7 +23,7 @@
 #menu > li a{
     display: block;
     text-align: center;
-    padding: 10px 0;
+    padding: 13px 0;
     color : RGB(127,127,127);
 }
 
@@ -54,4 +54,20 @@
 
 #centent{
     width : 100%;
+}
+
+button, input[type='submit'], input[type='button']{
+    background: none;
+    background-color: white;
+    border: 1px solid RGB(177,177,177);
+    border-radius: 12px;
+    padding: 5px 20px;
+}
+
+button:hover, input[type='submit']:hover, input[type='button']:hover{
+    color: orange;
+}
+
+.error{
+    color: crimson;
 }
