@@ -67,9 +67,8 @@
                     echo '<link rel="stylesheet" href="./resource/css/main/login.css"/>';
                 break; 
                 case "signUp": 
-                    echo '<link rel="stylesheet" href="./resource/css/join/signUp.css"/>'; 
-                break; 
                 case "signUpCheck": 
+                    echo '<link rel="stylesheet" href="./resource/css/join/signUp.css"/>'; 
                 break; 
                 case "signUpOk": 
                 break; 

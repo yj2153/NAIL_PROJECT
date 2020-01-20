@@ -20,26 +20,50 @@ if(!empty($_POST)){
 }
 
 ?>
-
-<p><?php echo $settings->check['check_info']; ?></p>
- <form action="" method="post" enctype="multipart/form-data">
+<div id="lead">
+    <h1><?php echo $settings->join['join_title']; ?></h1>
+    <p><?php echo $settings->check['check_info']; ?></p>
+</div>
+ <form action="" method="post">
  <input type="hidden" name="action" value="submit"/>
-    <dl>
-        <dt><?php echo $settings->check['check_input_name']; ?></dt>
-        <dd>
-            <?php echo h($_SESSION['join']['name']); ?>
-        </dd>
-        <dt><?php echo $settings->check['check_input_email']; ?></dt>
-            <?php echo h($_SESSION['join']['email']); ?>
-        <dd>
-        </dd>
-        <dt><?php echo $settings->check['check_input_password']; ?></dt>
-        <dd>
-        <?php echo $settings->check['check_input_password_value']; ?>
-        </dd>
+ <div id="signDiv" > 
+    <div id="signTblDiv">   
+    <table style="width:100%; height:100%">
+            <tr>
+                <td>   
+                    <table id="signTbl">
+                            <tr>
+                                <td><?php echo $settings->check['check_input_name']; ?></td>
+                                <td>
+                                    <?php echo h($_SESSION['join']['name']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $settings->check['check_input_email']; ?></td>
+                                <td>
+                                    <?php echo h($_SESSION['join']['email']); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $settings->check['check_input_password']; ?></td>
+                                <td>
+                                    <?php echo $settings->check['check_input_password_value']; ?>
+                                </td>
+                            </tr>
+                        </table>
+                </td>
+            </tr>
+    </table>                
+    </div>
         <div>
-            <a href="index.php?action=rewrite">&laquo;&nbsp;<?php echo $settings->check['check_rewrite']; ?></a> | 
-            <input type="submit" value="<?php echo $settings->check['check_regist']; ?>"/>
+            <input type="button" onclick="location.href='index.php?page=signUp&action=rewrite'" value="<?php echo $settings->check['check_rewirte']; ?>"/>
+            <input style="float:right;" type="submit" value="<?php echo $settings->check['check_regist']; ?>"/>
         </div>
-    </dl>
+</div>
  </form> 
