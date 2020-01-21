@@ -22,3 +22,10 @@
     margin: 0 auto;
     margin-top: 50px;
 }
+
+#nextBtnDiv{
+    width : 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: right;
+}

@@ -32,6 +32,9 @@ if(isset($_POST)){
 <input type="hidden" name="selDate" value="<?php echo $selDate; ?>" />
 <input type="hidden" name="selTime" value="<?php echo $selTime; ?>" />
 
+<div id="title">
+    <h1><?php echo $settings->booking['booking_check_title']; ?></h1>
+</div>
 <table id="checkTbl">
     <?php while($nail = $nails->fetch()) : ?>
         <tr>

@@ -44,13 +44,21 @@ while($booking = $bookings->fetch()){
 
 
 ?>
-<form action="index.php?page=bookingCheck" method="post" >
+<form action="" method="post" >
 <?php foreach($selMenus as $selMenu) : ?>
     <!-- 選択メニュー保持 -->
     <input type="hidden" name="nailMenu[]" value="<?php echo $selMenu; ?>" />
 <?php endforeach; ?>
-<div><button type="submit" name="startWeek" value="<?php echo $startDay-1; ?>"><?php echo $settings->booking['booking_prev'];?></button></div>
-<div><button type="submit" name="startWeek" value="<?php echo $startDay+1; ?>"><?php echo $settings->booking['booking_next'];?></button></div>
+    
+    <div id="title">
+        <h1><?php echo $settings->booking['booking_title']; ?></h1>
+    </div>
+
+    <div id="weekBtnDiv">
+    <div><button type="submit" name="startWeek" value="<?php echo $startDay-1; ?>"><?php echo $settings->booking['booking_prev'];?></button></div>
+    <div><button type="submit" name="startWeek" value="0"><?php echo $settings->booking['booking_now'];?></button></div>
+    <div><button type="submit" name="startWeek" value="<?php echo $startDay+1; ?>"><?php echo $settings->booking['booking_next'];?></button></div>
+    </div>
     <table id="dateTbl">
         <tr>
             <td>
@@ -87,7 +95,7 @@ while($booking = $bookings->fetch()){
                         }
 
                         if(strcmp(date("w", strtotime("+".$tdRow." day")), "0")){
-                            echo '<button type="submit">〇';
+                            echo '<button class="bookingCheck">〇';
                             echo '<input type="hidden" name="selDate" value="'.$week[$tdRow].'"/>';
                             echo '<input type="hidden" name="selTime" value="'.$time[$trRow].'"/>';
                             echo '</button>';

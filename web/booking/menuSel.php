@@ -18,7 +18,9 @@ $nails->execute();
 ?>
 <form id="bookingSel" action="index.php?page=booking" method="post">
     <div id="content">
-        <h1><?php echo $settings->booking['booking_menu']; ?></h1>
+        <div id="title">
+            <h1><?php echo $settings->booking['booking_menu']; ?></h1>
+        </div>
         <table id="listTbl">
             <?php while($nail = $nails->fetch()) : ?>
                 <?php if(!empty($nail['type']) && empty($nail['title'])) : ?>
@@ -42,8 +44,8 @@ $nails->execute();
                     </tr>
                 <?php elseif(!empty($nail['type'])) : ?>
                     <tr class="line">    
-                        <td><input type="checkbox" name="nailMenu[]" class="nailMenu" id="menu<?php echo $nail['id']; ?>" value="<?php echo $nail['id']; ?>"/></td>
                         <td>
+                        <input type="checkbox" name="nailMenu[]" class="nailMenu" id="menu<?php echo $nail['id']; ?>" value="<?php echo $nail['id']; ?>"/>
                             <?php if(!strcmp($lang, 'ja')){
                                     echo "<label for='menu".$nail['id']."'>".h($nail['title'])."</label>";
                                 }else{
@@ -61,6 +63,6 @@ $nails->execute();
                 <?php endif; ?>
             <?php endwhile; ?>
         </table>
-        <div><input type="button" id="nextBtn" value="<?php echo $settings->booking['booking_sel_next']; ?>"/></div>
+        <div id="nextBtnDiv"><input type="button" id="nextBtn" value="<?php echo $settings->booking['booking_sel_next']; ?>"/></div>
     </div>
 </form>

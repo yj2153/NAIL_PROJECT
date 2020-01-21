@@ -12,7 +12,7 @@ $nails->execute();
 
 <div id="content">
     <div id="title">
-    <h1><?php echo h($settings->booking['booking_menu_title']); ?></h1>
+        <h1><?php echo h($settings->booking['booking_menu_title']); ?></h1>
     </div>
     <table id="listTbl">
         <?php while($nail = $nails->fetch()) : ?>

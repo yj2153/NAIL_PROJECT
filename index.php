@@ -87,8 +87,10 @@
                 break; 
                 case "booking":
                     echo '<link rel="stylesheet" href="./resource/css/booking/booking.css"/>';
+                    echo '<script src="./resource/script/booking/booking.js"></script>';
                 break;
                 case "bookingSel":
+                    echo '<link rel="stylesheet" href="./resource/css/booking/menu.css"/>';
                     echo '<script src="./resource/script/booking/menuSel.js"></script>';
                 break;
                 case "bookingCheck":
