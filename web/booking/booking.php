@@ -51,7 +51,7 @@ while($booking = $bookings->fetch()){
 <?php endforeach; ?>
     
     <div id="title">
-        <h1><?php echo $settings->booking['booking_title']; ?></h1>
+        <h1><?php echo $settings->booking['booking_menu']; ?></h1>
     </div>
 
     <div id="weekBtnDiv">
@@ -96,8 +96,8 @@ while($booking = $bookings->fetch()){
 
                         if(strcmp(date("w", strtotime("+".$tdRow." day")), "0")){
                             echo '<button class="bookingCheck">〇';
-                            echo '<input type="hidden" name="selDate" value="'.$week[$tdRow].'"/>';
-                            echo '<input type="hidden" name="selTime" value="'.$time[$trRow].'"/>';
+                            echo '<input type="hidden" class="selDate" value="'.$week[$tdRow].'"/>';
+                            echo '<input type="hidden" class="selTime" value="'.$time[$trRow].'"/>';
                             echo '</button>';
                         }else{
                             //日曜日休み
