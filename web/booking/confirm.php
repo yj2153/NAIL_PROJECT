@@ -35,33 +35,66 @@ if(isset($_POST)){
 <div id="title">
     <h1><?php echo $settings->booking['booking_check_title']; ?></h1>
 </div>
-<table id="checkTbl">
-    <?php while($nail = $nails->fetch()) : ?>
+<div id="checkTblDiv">
+    <table id="checkTbl">
         <tr>
-        <?php if(!empty($nail['type'])) : ?>
-            <td>
-                <?php if(!strcmp($lang, 'ja')){
-                        echo h($nail['title']);
-                    }else{
-                        echo h($nail['title_ko']);
-                    } ?>
+            <td colspan="2">
+                <h3><?php echo h($settings->booking['booking_sel_date']); ?></h3>
             </td>
-        <?php else : ?>
-            <td>
-                <?php if(!strcmp($lang, 'ja')){
-                        echo h($nail['price']).$settings->booking['booking_type_unit'];
-                    }else{
-                        echo h($nail['price_ko']).$settings->booking['booking_type_unit'];
-                    } ?>
-            </td>
-        <?php endif; ?>
         </tr>
-    <?php endwhile; ?>
-    <tr>
-        <td>
-            <?php echo h($selDate)." ".h($selTime); ?>
-      </td>
-    </tr>
-</table>
-<div><input type="submit" value="<?php echo $settings->booking['booking_insert']; ?>"/></div>
+        <tr>
+            <td></td>
+            <td>
+                <?php echo h($selDate)." ".h($selTime); ?>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3><?php echo h($settings->booking['booking_sel_menu']); ?></h3>
+            </td>
+        </tr>
+        <?php while($nail = $nails->fetch()) : ?>
+            <?php if(!empty($nail['type'])) : ?>
+            <tr>
+                <td></td>
+                <td>
+                    <?php if(!strcmp($lang, 'ja')){
+                            echo h($nail['title']);
+                        }else{
+                            echo h($nail['title_ko']);
+                        } ?>
+                </td>
+            </tr>
+            <?php else : ?>
+            <tr>
+                <td colspan="2">
+                    <h3><?php echo h($settings->booking['booking_sel_price']); ?></h3>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <?php if(!strcmp($lang, 'ja')){
+                            echo h($nail['price']).$settings->booking['booking_type_unit'];
+                        }else{
+                            echo h($nail['price_ko']).$settings->booking['booking_type_unit'];
+                        } ?>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h3><?php echo h($settings->booking['booking_sel_time']); ?></h3>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <?php echo h($nail['useTime']); ?>
+                </td>
+            </tr>
+            <?php endif; ?>
+        <?php endwhile; ?>
+    </table>
+</div>
+<div id="btnDiv"><input type="submit" value="<?php echo $settings->booking['booking_insert']; ?>"/></div>
 </form>
