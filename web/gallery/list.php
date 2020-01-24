@@ -25,37 +25,45 @@ $img = $imgList->fetchAll();
 ?>
 
 <div id="content">
-    <div>
-        <a href="index.php?page=galleryRegist"><?php echo $settings->gallery['gallery_submit']; ?></a>
+    <div id="title">
+        <h1><?php echo $settings->gallery['gallery_list_title']; ?></h1>
     </div>
-    <table id="listTbl">
-        <?php for($trCnt=0; $trCnt<count($img); $trCnt+=4) : ?>
-            <tr class="line">
-                <?php for($tdCnt=$trCnt; $tdCnt<($trCnt+4); $tdCnt++) : ?>
-                    <?php if($tdCnt >= (count($img))){ break; } ?>
-                <td onclick="location.href='index.php?page=galleryView&listNum=<?php echo h($img[$tdCnt]['id']); ?>'">
-                    <table id="lineTbl">
-                        <tr>
-                            <td class="lineTitle">
-                                <span><?php echo h($img[$tdCnt]['title']); ?></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="lineImg">
-                                <img src="./resource/image/<?php echo h($img[$tdCnt]['picture']); ?>" width="100" height="100" alt=""/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="lineDate">
-                                <?php echo h($img[$tdCnt]['created']); ?>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+    <div id="rigistBtnDiv">
+        <button onclick="location.href='index.php?page=galleryRegist'"><?php echo $settings->gallery['gallery_submit']; ?></button>
+    </div>
+    <div id="listTblDiv">
+        <table id="listTbl">
+            <?php for($trCnt=0; $trCnt<count($img); $trCnt+=4) : ?>
+                <tr class="line">
+                    <?php for($tdCnt=$trCnt; $tdCnt<($trCnt+4); $tdCnt++) : ?>
+                        <?php if($tdCnt >= (count($img))){ 
+                            echo "<td></td>";
+                            continue;
+                         } ?>
+                    <td onclick="location.href='index.php?page=galleryView&listNum=<?php echo h($img[$tdCnt]['id']); ?>'">
+                        <table id="lineTbl">
+                            <tr>
+                                <td class="lineTitle">
+                                    <span><?php echo "No.".$tdCnt."  ".h($img[$tdCnt]['title']); ?></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lineImg">
+                                    <img src="./resource/image/<?php echo h($img[$tdCnt]['picture']); ?>" width="150" height="150" alt=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lineDate">
+                                    <?php echo h($img[$tdCnt]['created']); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <?php endfor; ?>
+                </tr>
                 <?php endfor; ?>
-            </tr>
-            <?php endfor; ?>
-    </table>
+        </table>
+    </div>
     <ul class="paging">
         <?php if($pageNum > 1){ ?>
             <li>

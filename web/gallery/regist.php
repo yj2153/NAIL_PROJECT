@@ -33,21 +33,29 @@ if(!empty($_POST)){
 ?>
 
  <form action="" method="post" enctype="multipart/form-data">
-    <dl>
-        <dt><?php echo h($settings->gallery['gallery_title']); ?></dt>
-        <dd>
-            <input type="text" name="title" size="35" maxlength="255" value="<?php echo isset($_POST['title']) ? h($_POST['title']) : ''; ?>" />
-            <?php if(isset($error['title']) && $error['title'] == 'blank') : ?>
-                <p class="error"><?php echo h($settings->gallery['gallery_title_error']); ?></p>
-            <?php endif; ?>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-        </dd>
-        <dt><?php echo h($settings->gallery['gallery_image']); ?></dt>
-        <dd>
-            <input type="file" name="image" size="35"/>
-            <?php if(isset($error['image']) && $error['image'] == 'type') : ?>
-                <p class="error"><?php echo h($settings->gallery['gallery_image_error']); ?></p>
-            <?php endif; ?>
-        </dd>
-    </dl>
-    <div><input type="submit" value="<?php echo h($settings->gallery['gallery_submit']); ?>"/></div>
+    
+ <div id="title">
+        <h1><?php echo $settings->gallery['gallery_submit']; ?></h1>
+    </div>   
+ <table id="registTbl">
+        <tr>
+            <td><?php echo h($settings->gallery['gallery_title']); ?></td>
+            <td>
+                <input type="text" name="title" size="35" maxlength="255" value="<?php echo isset($_POST['title']) ? h($_POST['title']) : ''; ?>" />
+                <?php if(isset($error['title']) && $error['title'] == 'blank') : ?>
+                    <p class="error"><?php echo h($settings->gallery['gallery_title_error']); ?></p>
+                <?php endif; ?>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            </td>   
+        </tr>
+        <tr>
+            <td><?php echo h($settings->gallery['gallery_image']); ?></td>
+            <td>
+                <input type="file" name="image" size="35"/>
+                <?php if(isset($error['image']) && $error['image'] == 'type') : ?>
+                    <p class="error"><?php echo h($settings->gallery['gallery_image_error']); ?></p>
+                <?php endif; ?>
+            </td>
+        </tr>
+    </table>
+    <div id="submitDiv"><input type="submit" value="<?php echo h($settings->gallery['gallery_submit']); ?>"/></div>
  </form> 

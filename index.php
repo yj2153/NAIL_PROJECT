@@ -96,6 +96,15 @@
                 case "bookingCheck":
                     echo '<link rel="stylesheet" href="./resource/css/booking/confirm.css"/>';
                 break;
+                case "gallery":
+                    echo '<link rel="stylesheet" href="./resource/css/gallery/list.css"/>';
+                break;
+                case "galleryView":
+                    echo '<link rel="stylesheet" href="./resource/css/gallery/view.css"/>';
+                break;
+                case "galleryRegist":
+                    echo '<link rel="stylesheet" href="./resource/css/gallery/regist.css"/>';
+                break;
                 default: 
                     echo '<link rel="stylesheet" href="./resource/css/info/info.css"/>';
                 break; 

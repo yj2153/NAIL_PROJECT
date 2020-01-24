@@ -1,0 +1,56 @@
+
+#title{
+    width:90%; 
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#rigistBtnDiv{
+    width:90%;
+    text-align: right;
+}
+#listTblDiv {
+    width:90%;
+    margin: 0 auto;
+}
+#listTbl, #lineTbl{
+    width: 100%;
+}
+
+#listTbl tr td{
+    width:25%;
+}
+
+#lineTbl tr td {
+    border: 1px solid RGB(227,227,227);
+}
+
+#lineTbl tr td{
+    padding : 10px 0px;
+}
+
+#lineTbl tr:nth-child(1) td{
+    padding-left: 10px;
+}
+
+#lineTbl tr:nth-child(3) td{
+    text-align: center;
+}
+
+#lineTbl tr:nth-child(2){
+    text-align: center;
+}
+
+#listTbl{
+    margin-bottom: 30px;
+}
+.paging{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.paging li{
+    display: inline-block;
+    padding: 0 20px;
+}

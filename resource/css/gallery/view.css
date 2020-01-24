@@ -1,0 +1,27 @@
+
+#title{
+    width:90%; 
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+}
+#viewTbl{
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 90%;
+}
+
+#viewTbl tr:nth-child(1) td:nth-child(1){
+    width:100px;
+}
+
+#viewTbl tr:nth-child(2){
+    text-align: center;
+}
+
+#viewTbl tr td{
+    border-top: 1px solid RGB(227,227,227);
+    border-bottom: 1px solid RGB(227,227,227);
+    padding: 20px 0;
+}

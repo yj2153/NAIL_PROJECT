@@ -1,0 +1,22 @@
+#title{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+#registTbl{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+#registTbl tr td{
+    border: 1px solid RGB(227,227,227);
+    padding: 20px 0;
+    padding-left: 10px;
+}
+
+#submitDiv{
+    text-align: center;
+    margin-bottom: 50px;
+}

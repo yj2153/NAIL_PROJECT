@@ -16,8 +16,7 @@ $height = $info[1] > 500 ? 500 : $info[1];
 
 ?>
 
-<div id="content">
-    <form action="" method="post">
+<form action="" method="post">
         <table id="viewTbl">
             <tr>
                 <td><?php echo h($settings->gallery['gallery_title']); ?></td>
@@ -30,4 +29,3 @@ $height = $info[1] > 500 ? 500 : $info[1];
             </tr>
         </table>
     </form>
-</div>
