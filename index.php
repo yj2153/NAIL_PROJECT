@@ -58,6 +58,7 @@
         <link rel="stylesheet" href="./resource/css/reset.css"/>
         <!-- <link rel="stylesheet" media="(max-width:700px)" href="./resource/css/media/common.css"/> -->
         <link rel="stylesheet" href="./resource/css/common.css"/>
+        <link rel="stylesheet" href="./resource/css/index.css"/>
 
         <?php switch($page){ 
                 case "map":
@@ -119,7 +120,7 @@
    
     <body>
         <div id="header">
-            <table style="width:99%; margin:0 auto;">
+            <table id="headerTbl" style="width:99%; margin:0 auto;">
                 <tr>
                     <td>
                         <!-- title -->

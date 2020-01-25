@@ -1,0 +1,15 @@
+#headerTbl tr td:nth-child(2),
+#headerTbl tr td:nth-child(3),
+#headerTbl tr td:nth-child(4){
+    width: 100px;
+}
+
+#headerTbl tr td:nth-child(2),
+#headerTbl tr td:nth-child(3){
+    font-weight: bold;
+    text-align: center;
+}
+
+#headerTbl tr td:nth-child(3) a:hover{
+    color: tomato;
+}
