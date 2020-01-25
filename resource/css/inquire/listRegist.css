@@ -1,4 +1,3 @@
-
 #title{
     width:90%; 
     margin: 0 auto;
@@ -6,8 +5,8 @@
     text-align: center;
 }
 #buttonDiv{
-    width:97%;
-    text-align: right;
+    text-align: center;
+    width:90%;
     margin: 0 auto;
     margin-bottom: 20px;
 }
@@ -15,7 +14,7 @@
 #viewTbl{
     width: 90%;
     margin:0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 #viewTbl tr{
@@ -26,10 +25,11 @@
 #viewTbl tr td{
     padding: 10px 0;
 }
-
 #viewTbl tr td:nth-child(1){
     padding-left: 10px;
 }
+
+
 #viewTbl tr:nth-child(2){
     min-height: 300px;
 }

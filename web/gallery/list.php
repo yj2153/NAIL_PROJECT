@@ -44,7 +44,7 @@ $img = $imgList->fetchAll();
                         <table id="lineTbl">
                             <tr>
                                 <td class="lineTitle">
-                                    <span><?php echo "No.".$tdCnt."  ".h($img[$tdCnt]['title']); ?></span>
+                                    <span><?php echo "No.".($tdCnt + 1)."  ".h($img[$tdCnt]['title']); ?></span>
                                 </td>
                             </tr>
                             <tr>

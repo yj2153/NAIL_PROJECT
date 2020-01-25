@@ -23,9 +23,11 @@ $inquireList->execute();
 
 ?>
 
-<div id="content">
-    <div>
-        <a href="index.php?page=inquireMsg"><?php echo $settings->inquire['inquire_submit']; ?></a>
+    <div id="title">
+        <h1><?php echo $settings->inquire['inquire_top_title']; ?></h1>
+    </div>
+    <div id="rigistBtnDiv">
+        <button onclick="location.href='index.php?page=inquireMsg'"><?php echo $settings->inquire['inquire_submit']; ?></button>
     </div>
     <table id="listTbl">
         <?php while($inquire = $inquireList->fetch()) : ?>
@@ -64,4 +66,3 @@ $inquireList->execute();
             <li><?php echo $settings->inquire['inquire_next']; ?></li>
         <?php } ?>
     </ul>
-</div>

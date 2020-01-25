@@ -1,17 +1,38 @@
+
+#title{
+    width:90%; 
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+}
+#rigistBtnDiv{
+    width:90%;
+    text-align: right;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
 #listTbl{
-    width:90%; margin:0 auto;
+    width:90%; 
+    margin:0 auto;
+    margin-bottom: 20px;
 }
 
 #listTbl tr:hover{
-    background-color: lightgoldenrodyellow;
+    color: tomato;
 }
 
 #listTbl tr td{
     border: 1px solid RGB(227,227,227);
+    padding: 10px 0;
+}
+
+#listTbl tr td:nth-child(1){
+    padding-left: 5px;
 }
 
 #lineTbl{
-    width:99%; margin:0 auto;
+    width:99%;
+    margin:0 auto;
 }
 
 #lineTbl tr td{
@@ -28,4 +49,15 @@
 #lineTbl tr td:nth-child(3){
     min-width: 100px;
     width:10%;
+}
+
+
+.paging{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.paging li{
+    display: inline-block;
+    padding: 0 20px;
 }

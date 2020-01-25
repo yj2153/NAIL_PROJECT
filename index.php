@@ -79,6 +79,7 @@
                 echo '<link rel="stylesheet" href="./resource/css/inquire/inquire.css"/>';
                 break;
                 case "inquireMsg":
+                    echo '<link rel="stylesheet" href="./resource/css/inquire/listRegist.css"/>';
                 break;
                 case "inquireView":
                 echo '<link rel="stylesheet" href="./resource/css/inquire/listView.css"/>';

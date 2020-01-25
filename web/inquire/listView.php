@@ -29,63 +29,62 @@ if(isset($_REQUEST['listNum'])){
     $comments->execute();
 }
 
-
 ?>
-
-<div id="content">
-    <form action="" method="post">
-        <div id="buttonDiv">
-            <?php if(!empty($userInfo) && strcmp($userInfo->getId(), $_REQUEST['listNum'])) : ?>
-                    <a href="index.php?page=inquireMsg&listNum=<?php echo h($_REQUEST['listNum']); ?>"><?php echo h($settings->inquire['inquire_change']); ?></a>
-            <?php endif; ?>
-        </div>
-        <table id="viewTbl">
+<div id="title">
+    <h1><?php echo $settings->inquire['inquire_top_title']; ?></h1>
+</div>
+<div id="buttonDiv">
+    <?php if(!empty($userInfo) && strcmp($userInfo->getId(), $_REQUEST['listNum'])) : ?>
+        <button onclick="location.href='index.php?page=inquireMsg&listNum=<?php echo h($_REQUEST['listNum']); ?>'"><?php echo $settings->inquire['inquire_change']; ?></button>
+    <?php endif; ?>
+</div>
+<form action="" method="post">
+    <table id="viewTbl">
+        <tr>
+            <td><?php echo h($settings->inquire['inquire_title']); ?></td>
+            <td colspan="2"><?php echo h($inquireMsg['title']); ?></td>
+        </tr>
+        <tr>
+            <td>
+                <?php echo h($settings->inquire['inquire_message']); ?>
+            </td>
+            <td colspan="2">
+                <?php echo h($inquireMsg['message']); ?>
+            </td>
+        </tr>
+        <?php while($comment = $comments->fetch()) : ?>
             <tr>
-                <td><?php echo h($settings->inquire['inquire_title']); ?></td>
-                <td colspan="2"><?php echo h($inquireMsg['title']); ?></td>
+                <td colspan="2">
+                    <?php echo h($comment['name']); ?>
+                    </br>
+                    <?php echo h($comment['message']); ?>
+                    </td>
+                <td>
+                    <?php if(!empty($userInfo) && !strcmp($userInfo->getId(), $comment['member_id'])) : ?>
+                        <a href="./inquire/commontDelete.php?listNum=<?php echo h($_REQUEST['listNum']); ?>&reply_id=<?php echo h($comment['id']); ?>"><?php echo $settings->inquire['inquire_delete']; ?></a>
+                    <?php endif; ?>
+                </td>
             </tr>
+        <?php endwhile; ?>
+        <?php if(!empty($userInfo)) : ?>
             <tr>
                 <td>
-                    <?php echo h($settings->inquire['inquire_message']); ?>
+                <?php echo h($userInfo->getName()); ?>
                 </td>
-                <td colspan="2">
-                    <?php echo h($inquireMsg['message']); ?>
+                <td>
+                    <textarea name="message" rows="5"><?php echo empty($message) ? '' : h($message); ?></textarea>
+                    <input type="hidden" name="listNum" value="<?php echo $_REQUEST['listNum'] ?>"/>
+                </td>
+                <td>
+                    <input type="submit" value="<?php echo $settings->inquire['inquire_submit']; ?>"/>
+                </td>
+            <tr>
+        <?php else : ?>
+            <tr>
+                <td colspan="3">
+                <?php echo h($settings->inquire['inquire_comment']); ?>
                 </td>
             </tr>
-            <?php while($comment = $comments->fetch()) : ?>
-                <tr>
-                    <td colspan="2">
-                        <?php echo h($comment['name']); ?>
-                        </br>
-                        <?php echo h($comment['message']); ?>
-                        </td>
-                    <td>
-                        <?php if(!empty($userInfo) && !strcmp($userInfo->getId(), $comment['member_id'])) : ?>
-                            <a href="./inquire/commontDelete.php?listNum=<?php echo h($_REQUEST['listNum']); ?>&reply_id=<?php echo h($comment['id']); ?>"><?php echo $settings->inquire['inquire_delete']; ?></a>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-            <?php endwhile; ?>
-            <?php if(!empty($userInfo)) : ?>
-                <tr>
-                    <td>
-                    <?php echo h($userInfo->getName()); ?>
-                    </td>
-                    <td>
-                        <textarea name="message" cols="50" rows="5"><?php echo empty($message) ? '' : h($message); ?></textarea>
-                        <input type="hidden" name="listNum" value="<?php echo $_REQUEST['listNum'] ?>"/>
-                    </td>
-                    <td>
-                        <input type="submit" value="<?php echo $settings->inquire['inquire_submit']; ?>"/>
-                    </td>
-                <tr>
-            <?php else : ?>
-                <tr>
-                    <td colspan="3">
-                    <?php echo h($settings->inquire['inquire_comment']); ?>
-                    </td>
-                </tr>
-            <?php endif; ?>
-        </table>
-    </form>
-</div>
+        <?php endif; ?>
+    </table>
+</form>

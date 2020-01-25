@@ -43,20 +43,25 @@ if(isset($_REQUEST['listNum'])){
 
 ?>
 
-<div id="content">
-    <form action="" method="post">
-        <dl>
-            <dt><?php echo $settings->inquire['inquire_title']; ?></dt>
-            <dd>
-                <input type="text" name="title" value="<?php echo empty($inquireMsg) ? '' : h($inquireMsg['title']); ?>" />
-            </dd>
-            <dt><?php echo $settings->inquire['inquire_message']; ?></dt>
-            <dd>
-                <textarea name="message" cols="50" rows="5"><?php echo empty($inquireMsg) ? '' : h($inquireMsg['message']); ?></textarea>
-            </dd>
-        </dl>
-        <div>
-            <input type="submit" value="<?php echo $settings->inquire['inquire_submit']; ?>"/>
-        </div>
-    </form>
+<div id="title">
+    <h1><?php echo $settings->inquire['inquire_top_title']; ?></h1>
 </div>
+<form action="" method="post">
+    <table id="viewTbl">
+        <tr>
+            <td><?php echo $settings->inquire['inquire_title']; ?></td>
+            <td>
+                <input type="text" name="title" value="<?php echo empty($inquireMsg) ? '' : h($inquireMsg['title']); ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td><?php echo $settings->inquire['inquire_message']; ?></td>
+            <td>
+                <textarea name="message" rows="15"><?php echo empty($inquireMsg) ? '' : h($inquireMsg['message']); ?></textarea>
+            </td>
+        </tr>
+    </table>
+    <div id="buttonDiv">
+        <input type="submit" value="<?php echo $settings->inquire['inquire_submit']; ?>"/>
+    </div>
+</form>
