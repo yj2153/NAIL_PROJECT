@@ -98,6 +98,9 @@
                 case "bookingCheck":
                     echo '<link rel="stylesheet" href="./resource/css/booking/confirm.css"/>';
                 break;
+                case "bookingList":
+                    echo '<link rel="stylesheet" href="./resource/css/booking/bookingList.css"/>';
+                break;
                 case "gallery":
                     echo '<link rel="stylesheet" href="./resource/css/gallery/list.css"/>';
                 break;
