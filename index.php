@@ -116,6 +116,15 @@
                 break; 
             } ?>
 
+            <style>
+                #menu > li a{
+                    <?php if(strcmp($lang, 'jp')) : ?>
+                        padding: 11px 0;
+                    <?php else : ?>
+                        padding: 13px 0;
+                    <?php endif;?>
+                }
+            </style>
     </head>
    
     <body>

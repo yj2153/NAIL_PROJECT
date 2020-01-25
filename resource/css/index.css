@@ -1,3 +1,54 @@
+#menu_div{
+    width: 100%;
+    height: 45px;
+}
+
+#menu{
+    width: 100%;
+    height: 100%;
+}
+
+#menu > li{
+    width:20%; 
+    height: 100%;
+    float: left;
+    border-bottom: 1px solid RGB(227,227,227);
+}
+
+#menu > li a{
+    display: block;
+    text-align: center;
+    color : RGB(127,127,127);
+}
+
+#menu > li a:hover{
+    color:orange;
+}
+#menu > li:hover #subMenu{
+    opacity: 1;
+    display: block;
+}
+
+#subMenu{
+    opacity: 0;
+    display: none;
+    position: absolute;
+    width: 20%;
+    background-color: white;
+}
+
+#subMenu > li a{
+    border: 1px solid RGB(227,227,227);
+    border-top: 0px;
+}
+
+#subMenu > li:nth-child(1) a{
+    border-top: 1px solid RGB(227,227,227);
+}
+
+#headerTbl tr td{
+    height: 90px;
+}
 #headerTbl tr td:nth-child(2),
 #headerTbl tr td:nth-child(3),
 #headerTbl tr td:nth-child(4){
