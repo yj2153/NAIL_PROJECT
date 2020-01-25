@@ -73,6 +73,7 @@
                 case "signUpOk": 
                 break; 
                 case "review":
+                    echo '<link rel="stylesheet" href="./resource/css/review/review.css"/>';
                 break; 
                 case "inquire":
                 echo '<link rel="stylesheet" href="./resource/css/inquire/inquire.css"/>';

@@ -32,8 +32,26 @@ $pageNum = min($pageNum, $maxPageNum);
 $start = ($pageNum - 1) * 5;
 $start = max(0, $start);
 
-$posts = $db->prepare('SELECT m.name, p.* FROM members m, posts p WHERE m.id = p.member_id ORDER BY p.created DESC LIMIT ?,5');
+$posts = $db->prepare('SELECT m.name, b.id, b.message,  b.member_id, b.created,b.reply_posts_id
+                        FROM ((SELECT p.id as id, p.message,  p.member_id, p.created, p.reply_posts_id
+                                FROM posts p 
+                            WHERE p.reply_posts_id = 0
+                            ORDER BY p.created  DESC LIMIT 0, 5)
+                            UNION
+                            (SELECT p.reply_posts_id as id, p.message,  p.member_id, p.created, p.reply_posts_id
+                                FROM posts p 
+                            WHERE p.reply_posts_id <> 0
+                                AND EXISTS (SELECT 1
+                                            FROM posts x
+                                            WHERE x.reply_posts_id = 0
+                                            AND x.id = p.reply_posts_id
+                                        ORDER BY p.created  DESC LIMIT 0, 5)
+                            ORDER BY p.created  DESC)) b
+                            ,members m
+                        WHERE m.id= b.member_id
+                        ORDER BY b.id DESC');
 $posts->bindParam(1, $start, PDO::PARAM_INT);
+$posts->bindParam(2, $start, PDO::PARAM_INT);
 $posts->execute();
 
 //返信の場合
@@ -48,42 +66,54 @@ if(isset($_REQUEST['res'])){
 ?>
 
 <div id="content">
-    <?php if(!empty($userInfo)) : ?>
     <form action="" method="post">
-        <dl>
-            <dt><?php echo h($userInfo->getName()); ?><?php echo $settings->review['review_info']; ?></dt>
-            <dd>
-                <textarea name="message" cols="50" rows="5"><?php echo empty($message) ? '' : h($message); ?></textarea>
-                <input type="hidden" name="reply_post_id" value="<?php echo isset($_REQUEST['res']) ? h($_REQUEST['res']) : ''; ?>"/>
-            </dd>
-        </dl>
-        <div>
-            <input type="submit" value="<?php echo $settings->review['review_submit']; ?>"/>
-        </div>
-    </form>
-    <?php else : ?>
-        <div>
-            <?php echo h($settings->review['review_comment']) ?>
-        </div>
-    <?php endif; ?>
+        <table id="inputTbl">
+            <tr>
+                <td><?php if(!empty($userInfo)) : ?>    
+                        <?php echo h($userInfo->getName()); ?><?php echo $settings->review['review_info']; ?>
+                    <?php else: ?>
+                        <?php echo h($settings->review['review_comment']); ?>
+                    <?php endif; ?></td>
+            </tr>
+            </tr>   
+                <td>
+                    <textarea name="message" cols="50" rows="5" <?php if(empty($userInfo)){ echo "disabled='true'"; } ?>><?php echo empty($message) ? '' : h($message); ?></textarea>
+                    <input type="hidden" name="reply_post_id" value="<?php echo isset($_REQUEST['res']) ? h($_REQUEST['res']) : ''; ?>"/>
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <?php if(!empty($userInfo)) : ?>    
+                        <input type="submit" value="<?php echo $settings->review['review_submit']; ?>"/>
+                    <?php endif; ?>
+                </td>
+            </tr>  
+        </table>
 
+    <table id="msgDiv">
     <?php while($post = $posts->fetch()) : ?>
-    <div class="msg">
-        <p>
-            <?php echo makeLink(h($post['message'])); ?>
-            <span class="name">(<?php echo h($post['name']); ?>)</span>
-            <?php if(!empty($userInfo)) : ?>
-                [<a href="index.php?page=review&res=<?php echo h($post['id']); ?>">re</a>]
-            <?php endif; ?>
-        </p>
-        <p class="day">
-            <?php echo h($post['created']); ?>
-            <?php if(!empty($userInfo) && $userInfo->getId() == $post['member_id']) : ?>
-                [<a href="./review/delete.php?id=<?php echo h($post['id']); ?>" style="color:#F33;"><?php echo $settings->review['review_delete']; ?></a>]
-            <?php endif; ?>
-        </p>
-    </div>
+        <tr>
+            <td class="<?php if(strcmp($post['reply_posts_id'], 0)){echo "reMsg";} ?>">
+            <div class="msg">
+                <div class="name"><?php echo h($post['name']); ?>
+                    <?php if((!empty($userInfo) && !strcmp($post['reply_posts_id'], 0))) : ?>
+                        [<a href="index.php?page=review&res=<?php echo h($post['id']); ?>">re</a>]
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <?php echo makeLink(h($post['message'])); ?>
+                </div>
+                <div class="day">
+                    <?php echo h($post['created']); ?>
+                    <?php if(!empty($userInfo) && $userInfo->getId() == $post['member_id']) : ?>
+                        [<a href="./review/delete.php?id=<?php echo h($post['id']); ?>" style="color:#F33;"><?php echo $settings->review['review_delete']; ?></a>]
+                    <?php endif; ?>
+                </div>
+            </div>
+        </td>
+    </tr>
     <?php endwhile; ?>
+    </table>
 
     <ul class="paging">
         <?php if($pageNum > 1){ ?>
